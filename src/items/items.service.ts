@@ -14,4 +14,8 @@ export class ItemsService {
         this.items.push({...item, id: v4()})
         this.itemNames.add(item.name)
     }
+
+    findById(itemId: string) {
+        return this.items.find(item => item.id === itemId);
+    }
 }
