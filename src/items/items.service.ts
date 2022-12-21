@@ -34,4 +34,23 @@ export class ItemsService {
 
         return this.items.filter(item => match(item)(query))
     }
+
+    update(itemId: string, name: string) {
+        const index = this.items.findIndex(item => item.id === itemId);
+
+        if (index === -1) throw new Error('could not find item with id ' + itemId);
+
+        this.items[index].name = name;
+
+        return this.items[index]
+    }
+
+    delete(itemId: string) {
+        const index = this.items.findIndex(item => item.id === itemId);
+
+        if (index === -1) throw new Error('could not find item with id ' + itemId);
+        
+        return this.items.splice(index, 1);
+
+    }
 }
